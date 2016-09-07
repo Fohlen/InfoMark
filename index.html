@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en" class="no-js">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" href="css/reset.css">
+    <!-- CSS reset -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/slick.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <!-- Resource style -->
+    <script src="js/modernizr.js"></script>
+    <!-- Modernizr -->
+    <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css">
+    <title>InfoMark</title>
+</head>
+
+<body>
+    <header class="cd-header">
+        <div id="cd-logo">
+            <a href="#0"><img src="assets/cd-logo.svg" alt="Logo"></a>
+        </div>
+
+        <nav class="cd-primary-nav">
+            <ul>
+                <li><a href="https://github.com/cgtuebingen/InfoMark">GitHub</a></li>
+                <li><a href="https://github.com/cgtuebingen/InfoMark/archive/master.zip">ZIP</a></li>
+            </ul>
+        </nav>
+        <!-- .cd-primary-nav -->
+    </header>
+
+    <section class="cd-hero">
+        <ul class="cd-hero-slider autoplay">
+            <li class="selected">
+                <div class="cd-full-width">
+                    <h2>InfoMark</h2>
+                    <p>A simple, comprehensive course management system for self-hosting with automated tests for submissions.</p>
+                    <p>Shipped within Docker and Capistrano</p>
+                    <a href="https://github.com/cgtuebingen/InfoMark" target="_blank" class="cd-btn">Code &amp; Download</a>
+                </div>
+                <!-- .cd-full-width -->
+            </li>
+
+
+            <li>
+                <div class="cd-half-width">
+                    <h2>Self-hosted Course-management</h2>
+                    <p>add exercise sheets, upload your slides, send mails from the system and grade the student submission </p>
+                    <p>based on Rails, Resque, Redis, Postgresql, Docker</p>
+                    <a href="https://github.com/cgtuebingen/InfoMark" class="cd-btn">Download</a>
+                    <a href="https://github.com/cgtuebingen/InfoMark/wiki/Installation" class="cd-btn secondary">Installation</a>
+                </div>
+                <!-- .cd-half-width -->
+
+                <div class="cd-half-width cd-img-container">
+                    <img src="assets/img/profile.PNG" alt="tech 1">
+                </div>
+                <!-- .cd-half-width.cd-img-container -->
+            </li>
+
+            <li>
+                <div class="cd-half-width cd-img-container">
+                    <img src="assets/img/testing.png" alt="tech 2">
+                </div>
+                <!-- .cd-half-width.cd-img-container -->
+
+                <div class="cd-half-width">
+                    <h2>test uploads automatically</h2>
+                    <p>Give your students direct feedback by running public and private tests inside a secured docker environment like a continuos integration system. But simple.</p>
+                    <a href="https://github.com/cgtuebingen/InfoMark" class="cd-btn">Download</a>
+                    <a href="#test" class="cd-btn secondary">Learn More</a>
+                </div>
+                <!-- .cd-half-width -->
+
+            </li>
+
+        </ul>
+        <!-- .cd-hero-slider -->
+
+        <div class="cd-slider-nav">
+            <nav>
+                <span class="cd-marker item-1"></span>
+
+                <ul>
+                    <li class="selected"><a href="#0">Intro</a></li>
+                    <li><a href="#0">Overview</a></li>
+                    <li><a href="#0">Testing</a></li>
+                </ul>
+            </nav>
+        </div>
+        <!-- .cd-slider-nav -->
+    </section>
+    <!-- .cd-hero -->
+
+    <main class="cd-main-content">
+        <h2>How to handle the assignment submissions from 400 students each week?</h2>
+        <p>During the term 2016 we were responsible for the computer science class "Informatik 2" at University of Tübingen. The course contained mandatory exercise sheets each single week. But letting the students upload their assignment submissions is not enought. The important questions is: How to make the grading procedure each week more easy, more fast and more fair?
+        </p>
+
+
+        <h2>Self-hosted Online Service for managing the submission files, exercise sheets and earned points.</h2>
+        <p class="wow fadeInLeft">A quick look revealed the disillusioning situation. There was no solution tailored exactly to our use-case. Therefore our system InfoMark was written from scratch to provide the students a nice learning experience, to reduce our workload and simplify the time-consuming work of tutors during the grading phase.</p>
+        <p class=" wow fadeInUp">The system should be:
+            <br> - reliable: We like backups, but not the restoring procedure.
+            <br> - helpful: We would like to reduce the workload and not increase it.
+            <br> - nice UI: If we use a system, we should like or even love to use it.
+            <br> - without any setup: For any local tests, we use docker-compose to setup the environment
+        </p>
+
+        <div class="your-class wow fadeInUp">
+            <div><img src="assets/img/dashboard.jpg"></div>
+            <div><img src="assets/img/exercise-sheet.jpg"></div>
+   
+
+        </div>
+
+
+        <h2 id="test" name="test">Test assignment submissions</h2>
+        <p>You can think of InfoMark as a combination of GitHub with Jenkins CI for the everyday life at university.</p>
+        <p>If we could automatically test an assignment submission can be compiled and runs like expected; then the students would be confident about their uploaded solution and the tutors can check the code instead of fighting against compiler issues. Each upload as a zip-file is enqueued in our testing-pipeline. Using Resque, Redis and Docker the assignment submission is automatically tested in a sandbox environment if ressources are available. The students get the result of our tailored public tests. The tutors get the docker-log as well as additional informations from the private tests. Running tests on a malicious submission in a Docker sandbox let only the Docker process die. This provides each student a learning experience by fixing their code right before the deadline. Missunderstandings of the exercise task are not possible anymore.
+        </p>
+        <p>We allowed the students to upload, upload, upload and upload and upload ... you get the point ... their solutions multiple times. Because of using public and private tests, there will be no overfitting to our random private tests. From our experience, students used this opportunity to check their solutions on their own and deal with their code until it's fine. It is important to help the students to figure out on their own to fix any issue with their code. So we just tell them, where they fail. And they will try to fix it.</p>
+        <p>The individual sandbox environment just returns an xml report. So you can test everything: Python, Java, C++, ... It is just a bash script which runs in a docker container with restricted permissions and without internet access.</p>
+
+        <img class=" wow fadeInLeft" src="assets/img/docker-log.jpg">
+
+
+        <h2>Make the life of a tutor easier</h2>
+        <p>After the deadline for an exercise sheet all valid assignment submissions were collected and compressed to a single zip file into a standard directory structure renaming all directories with convenient names. A tutor might download all relevant files by a single click or directly add comments to the code on the webpage. The system allows inline comments at the code. It is as easy as commenting code on GitHub. </p>
+
+
+        <div class="your-class wow fadeInUp">
+            <div><img src="assets/img/inline-comments.jpg"></div>
+            <div><img src="assets/img/grading.jpg"></div>
+            <div><img src="assets/img/grade-index.jpg"></div>
+        </div>
+
+
+
+        <h2>And it just works</h2>
+        <p>Using Ruby on Rails has serveral advantages as SQL injection protection, easy database queries from the console, zero-downtime deploys using Capistrano and multiple data formats as json or csv. In fact, we developed the system over the term and add new features. Deploying new features using Capistrano were done during the day on our production server without any issues or database corruption. </p>
+        <p>We did not notice any performance issues. But for safety we use background workers for updating a cache of the earned points for the exercise sheets, testing submissions, sending mails or zipping files.</p>
+        <p>Nobody noticed that we were updating the production system.</p>
+
+        <h2>Everything in one place</h2>
+        <p>Extra course material or the slides can be uploaded directly on the site. Choosing a minimum amount of points to approve students to the exam, will let the system to filter out those and add a notification on their dashboard. </p>
+        
+        <div class="your-class wow fadeInUp">
+
+            <div><img src="assets/img/course-material.jpg"></div>
+
+        </div>
+        
+    
+    </main>
+    <!-- .cd-main-content -->
+
+    <script src="js/jquery-2.1.1.js"></script>
+    <script type="text/javascript" src="js/slick.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/wow.min.js"></script>
+
+    <!-- Resource jQuery -->
+</body>
+
+</html>
